@@ -91,7 +91,7 @@ pipeline {
                 sh '''
                     echo "=== clang-tidy ===" | tee reports/clang-tidy.txt
 
-                    clang-tidy sort.c -- -std=c11 \
+                    clang-tidy sort.c -checks='clang-analyzer-*,bugprone-*,readability-*,performance-*' -- -std=c11 \
                         2>&1 | tee -a reports/clang-tidy.txt
                 '''
             }
